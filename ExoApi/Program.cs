@@ -12,6 +12,7 @@ builder.Services.AddScoped<ExoApiContext, ExoApiContext>();
 
 builder.Services.AddTransient<IProjetoRepository, ProjetoRepository>();
 
+builder.Services.AddTransient<IUsuarioRepository, UsuarioRepository>();
 
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();

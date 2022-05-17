@@ -7,7 +7,6 @@ namespace ExoApi.Repositories
     public class ProjetoRepository : IProjetoRepository
     {
         private ExoApiContext _context;
-
         public ProjetoRepository(ExoApiContext context)
         {
             _context = context;

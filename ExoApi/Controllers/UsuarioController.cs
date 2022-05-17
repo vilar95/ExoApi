@@ -11,7 +11,6 @@ namespace ExoApi.Controllers
     public class UsuarioController : ControllerBase
     {
         private readonly IUsuarioRepository _iUsuarioRepository;
-
         public UsuarioController(IUsuarioRepository usuarioRepository)
         {
             _iUsuarioRepository = usuarioRepository;

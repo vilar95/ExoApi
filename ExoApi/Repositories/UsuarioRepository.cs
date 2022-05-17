@@ -12,6 +12,7 @@ namespace ExoApi.Repositories
         {
             _context = context;
         }
+
         public void Atualizar(int id, Usuario usuario)
         {
             Usuario usuarioEncotrado = _context.Usuarios.Find(id);

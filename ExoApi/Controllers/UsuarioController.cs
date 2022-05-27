@@ -25,8 +25,7 @@ namespace ExoApi.Controllers
             }
             catch (Exception)
             {
-
-                throw;
+                throw new Exception("Não foi possível listar os usuários");
             }
         }
 
@@ -45,8 +44,7 @@ namespace ExoApi.Controllers
             }
             catch (Exception)
             {
-
-                throw;
+                throw new Exception("Não foi possível encontrar o usuário");
             }
         }
         [HttpPost]
@@ -60,8 +58,7 @@ namespace ExoApi.Controllers
             }
             catch (Exception)
             {
-
-                throw;
+                throw new Exception("Não foi possível cadastrar o usuário");
             }
         }
         [HttpPut("{id}")]
@@ -76,8 +73,7 @@ namespace ExoApi.Controllers
             }
             catch (Exception)
             {
-
-                throw;
+                throw new Exception("Não foi possível atualizar o usuário");
             }
         }
         [HttpDelete("{id}")]
@@ -91,8 +87,7 @@ namespace ExoApi.Controllers
             }
             catch (Exception)
             {
-
-                throw;
+                throw new Exception("Não foi possível deletar o usuário");
             }
         }
     }

@@ -1,5 +1,6 @@
 ﻿using ExoApi.Models;
 using ExoApi.Repositories;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -23,9 +24,9 @@ namespace ExoApi.Controllers
             {
                 return Ok(_projetoRepository.Listar());
             }
-            catch (Exception e)
+            catch (Exception)
             {
-                throw new Exception(e.Message);
+                throw new Exception("Não foi possível listar os projetos");
             }
         }
 
@@ -44,8 +45,7 @@ namespace ExoApi.Controllers
             }
             catch (Exception)
             {
-
-                throw;
+                throw new Exception("Não foi possível encontrar o projeto");
             }
         }
         [HttpPost]
@@ -59,8 +59,7 @@ namespace ExoApi.Controllers
             }
             catch (Exception)
             {
-
-                throw;
+                throw new Exception("Não foi possível cadastrar os projetos");
             }
         }
 
@@ -75,11 +74,10 @@ namespace ExoApi.Controllers
             }
             catch (Exception)
             {
-
-                throw;
+                throw new Exception("Não foi possível atualizar o projeto");
             }
         }
-
+        [Authorize]
         [HttpDelete("{id}")]
         public IActionResult Deletar(int id)
         {
@@ -92,8 +90,7 @@ namespace ExoApi.Controllers
             }
             catch (Exception)
             {
-
-                throw;
+                throw new Exception("Não foi possível deletar o projeto");
             }
         }
     }

@@ -39,7 +39,7 @@ namespace ExoApi.Controllers
                 new Claim(ClaimTypes.Role,usuarioEncontrado.Tipo)
             };
 
-            var chave = new SymmetricSecurityKey(System.Text.Encoding.UTF8.GetBytes("chapter-chave-autenticacao"));
+            var chave = new SymmetricSecurityKey(System.Text.Encoding.UTF8.GetBytes("exoapi-chave-autenticacao"));
 
             var credenciais = new SigningCredentials(chave, SecurityAlgorithms.HmacSha256);
 
@@ -52,7 +52,7 @@ namespace ExoApi.Controllers
             );
 
             return Ok(
-                new { token = new JwtSecurityTokenHandler().WriteToken(meuToken) }
+                    new { token = new JwtSecurityTokenHandler().WriteToken(meuToken) }
                 );
         }
     }

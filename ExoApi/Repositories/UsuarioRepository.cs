@@ -21,9 +21,11 @@ namespace ExoApi.Repositories
                 usuarioEncotrado.Email = usuario.Email;
                 usuarioEncotrado.Senha = usuario.Senha;
                 usuarioEncotrado.Tipo = usuario.Tipo;
-                _context.Usuarios.Update(usuario);
-                _context.SaveChanges();
             }
+            
+            _context.Usuarios.Update(usuarioEncotrado);
+            
+            _context.SaveChanges();
         }
 
         public Usuario BuscarPorId(int id)

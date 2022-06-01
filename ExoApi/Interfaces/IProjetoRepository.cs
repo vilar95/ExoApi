@@ -9,5 +9,6 @@ namespace ExoApi.Interfaces
         void Cadastrar(Projeto projeto);
         void Atualizar(int id, Projeto projeto);
         void Deletar(int id);
+
     }
 }

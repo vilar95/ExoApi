@@ -1,4 +1,5 @@
-﻿using ExoApi.Models;
+﻿using ExoApi.Interfaces;
+using ExoApi.Models;
 using ExoApi.Repositories;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
@@ -11,8 +12,8 @@ namespace ExoApi.Controllers
     [ApiController]
     public class ProjetoController : ControllerBase
     {
-        private readonly ProjetoRepository _projetoRepository;
-        public ProjetoController(ProjetoRepository projetoRepository)
+        private readonly IProjetoRepository _projetoRepository;
+        public ProjetoController(IProjetoRepository projetoRepository)
         {
             _projetoRepository = projetoRepository;
         }
@@ -77,14 +78,20 @@ namespace ExoApi.Controllers
                 throw new Exception("Não foi possível atualizar o projeto");
             }
         }
-        [Authorize]
+
+        [Authorize(Roles = "0")]
         [HttpDelete("{id}")]
         public IActionResult Deletar(int id)
         {
             try
             {
-                _projetoRepository.Deletar(id);
+                Projeto projetoBuscado = _projetoRepository.BuscarPorId(id);
 
+                if (projetoBuscado == null)
+                {
+                    return NotFound();
+                }
+                _projetoRepository.Deletar(id);
 
                 return StatusCode(202);
             }
